@@ -1,5 +1,6 @@
 import React from 'react';
-import { People } from './features/people/People';
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -15,22 +16,22 @@ function App() {
         <div className="flex-1 px-2 mx-2">Star Wars wiki</div>
         <div className="flex-none hidden lg:block">
           <ul className="menu menu-horizontal">
-            <li><a href="/">Characters</a></li>
-            <li><a href="/">Planets</a></li>
-            <li><a href="/">Starships</a></li>
+            <li><Link to="people">Characters</Link></li>
+            <li><Link to="planets">Planets</Link></li>
+            <li><Link to="starships">Star ships</Link></li>
           </ul>
         </div>
       </div>
       <div className="m-6">
-        <People />
+        <Outlet />
       </div>
     </div> 
     <div className="drawer-side">
       <label htmlFor="my-drawer-3" className="drawer-overlay"></label> 
       <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
-        <li><a href="/">Characters</a></li>
-        <li><a href="/">Planets</a></li>
-        <li><a href="/">Starships</a></li>
+        <li><Link to="people">Characters</Link></li>
+        <li><Link to="planets">Planets</Link></li>
+        <li><Link to="starships">Star ships</Link></li>
       </ul>
     </div>
   </div>

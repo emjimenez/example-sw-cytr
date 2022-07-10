@@ -3,9 +3,17 @@ export interface Character {
   name: string
 }
 
-export interface PeopleList {
+export interface Planet {
+  name: string
+}
+
+export interface StarShip {
+  name: string
+}
+
+export interface ListResponse<T> {
   count: number
   next: string
   previous?: string
-  results: Character[]
+  results: T[]
 }
