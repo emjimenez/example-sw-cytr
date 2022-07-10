@@ -6,6 +6,9 @@ export const swApi = createApi({
   reducerPath: 'swApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://swapi.dev/api/' }),
   endpoints: (builder) => ({
+    getPeoplePage: builder.query<ListResponse<Character>, number>({
+      query: (page) => `people/?page=${page}`,
+    }),
     getAllPeople: builder.query<Character[], void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
         const people: Character[] = [];
@@ -63,4 +66,4 @@ export const swApi = createApi({
   }),
 })
 
-export const { useGetAllPeopleQuery, useGetAllPlanetsQuery, useGetAllStarShipsQuery } = swApi
+export const { useGetAllPeopleQuery, useGetPeoplePageQuery, useGetAllPlanetsQuery, useGetAllStarShipsQuery } = swApi

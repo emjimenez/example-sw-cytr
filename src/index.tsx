@@ -10,6 +10,7 @@ import {
   Route,
 } from "react-router-dom"
 import { People } from './features/people/People'
+import { CharacterView } from './features/people/CharacterView'
 import { Planets } from './features/planets/Planets'
 import { Starships } from './features/starships/Starships'
 import './index.css'
@@ -24,9 +25,8 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<People />} />
-            <Route path="people" element={<People />}>
-              <Route path=":characterId" element={<People />} />
-            </Route>
+            <Route path="people/:id" element={<CharacterView />} />
+            <Route path="people" element={<People />} />
             <Route path="planets" element={<Planets />} />
             <Route path="starships" element={<Starships />} />
           </Route>

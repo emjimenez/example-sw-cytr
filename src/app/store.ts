@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import peopleReducer from '../features/people/peopleSlice';
 import { swApi } from '../services/sw'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    people: peopleReducer,
     [swApi.reducerPath]: swApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
