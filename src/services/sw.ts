@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query'
-import type { ListResponse, Character, Planet, StarShip } from './types'
+import type { ListResponse, Character, Planet, StarShip, Film, Species, Vehicle } from './types'
 
 export const swApi = createApi({
   reducerPath: 'swApi',
@@ -26,6 +26,9 @@ export const swApi = createApi({
         }
         return { data: people }
       },
+    }),
+    getPlanet: builder.query<Planet, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
     }),
     getAllPlanets: builder.query<Planet[], void>({
       async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
@@ -63,7 +66,33 @@ export const swApi = createApi({
         return { data: starships }
       },
     }),
+    getStarShip: builder.query<StarShip, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
+    }),
+    getFilm: builder.query<Film, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
+    }),
+    getVechicle: builder.query<Vehicle, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
+    }),
+    getSpecies: builder.query<Species, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
+    }),
+    getCharacter: builder.query<Character, string>({
+      query: (uri) => uri.replace('https://swapi.dev/api/', '')
+    }),
   }),
 })
 
-export const { useGetAllPeopleQuery, useGetPeoplePageQuery, useGetAllPlanetsQuery, useGetAllStarShipsQuery } = swApi
+export const {
+  useGetAllPeopleQuery,
+  useGetPeoplePageQuery,
+  useGetAllPlanetsQuery,
+  useGetAllStarShipsQuery,
+  useGetPlanetQuery,
+  useGetFilmQuery,
+  useGetVechicleQuery,
+  useGetSpeciesQuery,
+  useGetStarShipQuery,
+  useGetCharacterQuery,
+} = swApi

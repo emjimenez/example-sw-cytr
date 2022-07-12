@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 export interface PeopleState {
   list: Character[];
+  favourites: string[];
   status: 'idle' | 'loading' | 'failed';
   total: number;
   page: number;
@@ -14,6 +15,7 @@ export interface PeopleState {
 
 const initialState: PeopleState = {
   list: [],
+  favourites: [],
   status: 'idle',
   total: 0,
   page: 0,
@@ -31,6 +33,7 @@ export const selectPeople = (state: RootState) => state.people.list;
 export const selectStatus = (state: RootState) => state.people.status;
 export const selectIsLoading = (state: RootState) => state.people.status === 'loading';
 export const selectError = (state: RootState) => state.people.status === 'failed';
+export const selectFavourites = (state: RootState) => state.people.favourites;
 
 export const peopleSlice = createSlice({
   name: 'people',
@@ -51,6 +54,14 @@ export const peopleSlice = createSlice({
         state.list.push(...action.payload.data.results)
         state.total = action.payload.data.count;
       }
+    },
+    toggleFav: (state, action: PayloadAction<string>) => {
+       const index = state.favourites.indexOf(action.payload)
+       if (index >= 0) {
+         state.favourites.splice(index, 1)
+       } else {
+         state.favourites.push(action.payload)
+       }
     }
   },
   extraReducers: (builder) => {
@@ -99,7 +110,7 @@ export const fetchPeoplePage = createAsyncThunk<boolean, void, { state: RootStat
   }
 );
 
-// export const {} = peopleSlice.actions;
+export const { toggleFav } = peopleSlice.actions;
 
 export const usePeople = () => {
   const dispatch = useAppDispatch()

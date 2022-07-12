@@ -19,6 +19,7 @@ function App() {
             <li><Link to="people">Characters</Link></li>
             <li><Link to="planets">Planets</Link></li>
             <li><Link to="starships">Star ships</Link></li>
+            <li><Link to="favourites">Favourites</Link></li>
           </ul>
         </div>
       </div>
@@ -32,6 +33,7 @@ function App() {
         <li><Link to="people">Characters</Link></li>
         <li><Link to="planets">Planets</Link></li>
         <li><Link to="starships">Star ships</Link></li>
+        <li><Link to="favourites">Favourites</Link></li>
       </ul>
     </div>
   </div>

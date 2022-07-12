@@ -12,7 +12,9 @@ import {
 import { People } from './features/people/People'
 import { CharacterView } from './features/people/CharacterView'
 import { Planets } from './features/planets/Planets'
-import { Starships } from './features/starships/Starships'
+import { StarShips } from './features/starships/StarShips'
+import { PlanetView } from './features/planets/PlanetView'
+import { StarShipView } from './features/starships/StarShipView'
 import './index.css'
 
 const container = document.getElementById('root')!
@@ -28,7 +30,10 @@ root.render(
             <Route path="people/:id" element={<CharacterView />} />
             <Route path="people" element={<People />} />
             <Route path="planets" element={<Planets />} />
-            <Route path="starships" element={<Starships />} />
+            <Route path="planets/:id" element={<PlanetView />} />
+            <Route path="starships" element={<StarShips />} />
+            <Route path="starships/:id" element={<StarShipView />} />
+            <Route path="favourites" element={<People onlyFavorites />} />
           </Route>
         </Routes>
       </BrowserRouter>
